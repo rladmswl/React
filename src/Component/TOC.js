@@ -9,8 +9,11 @@ class TOC extends Component {
             lists.push(
                 <li key={data[i].id}>
                     <a href={"/content/" + data[i].id}
+                       data-id={data[i].id} // 속성 이용
                        onClick={function (e){
-
+                            e.preventDefault();
+                            this.props.onChangePage(e.target.dataset.id);
+                            // e.target은 a태그를 가르키므로, 이것을 이용하여 data-id의 값을 알아낼 수 있다.
                        }.bind(this)}
                     >{data[i].title}
                     </a>
